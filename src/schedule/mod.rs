@@ -38,6 +38,7 @@ impl ScheduleRequestBuilder {
         }
     }
 
+    /// Отправить запрос
     pub async fn send(&self) -> Result<ScheduleResponse, YaRaspError> {
         let response = self
             .ya_rasp_client

@@ -42,6 +42,8 @@ impl SearchRequestBuilder {
             transfers: false,
         }
     }
+
+    /// Отправить запрос
     pub async fn send(&self) -> Result<SearchResponse, YaRaspError> {
         let response = self
             .ya_rasp_client

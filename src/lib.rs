@@ -12,7 +12,7 @@ pub use crate::search::SearchRequestBuilder;
 pub use crate::stations_list::stations_list_response::StationsListResponse;
 pub use crate::stations_list::StationsListRequestBuilder;
 
-// Основной клиент для взаимодействия с API
+/// Основной клиент для взаимодействия с API
 #[derive(Clone)]
 pub struct YaRaspClient {
     api_key: String,
@@ -20,6 +20,7 @@ pub struct YaRaspClient {
 }
 
 impl YaRaspClient {
+    /// Создать новый экзепляр клиента, используя переданный API ключ
     pub fn new(api_key: &str) -> YaRaspClient {
         Self {
             api_key: String::from(api_key),
@@ -27,14 +28,18 @@ impl YaRaspClient {
         }
     }
 
+    /// Возвращает конструктор запроса на поиск расписания между станциями, код которых был передан
     pub fn search(&self, from: &str, to: &str) -> SearchRequestBuilder {
         SearchRequestBuilder::new(self.clone(), from.to_string(), to.to_string())
     }
 
+    /// Возвращает конструктор запроса на поиск расписания для станции, чей код был передан
     pub fn schedule(&self, station: &str) -> ScheduleRequestBuilder {
         ScheduleRequestBuilder::new(self.clone(), station.to_string())
     }
 
+    /// Возвращает конструктор запроса на получения списка всех станций из API.
+    /// Можно использовать для поиска кода станции по её названию
     pub fn stations_list(&self) -> StationsListRequestBuilder {
         StationsListRequestBuilder::new(self.clone())
     }

@@ -5,6 +5,7 @@
 ---
 
 - Основана на Reqwest и Serde
+- Простая в использовании
 - Асинхронная
 - Простое взаимодействие
 - Типизация возвращаемых данных
@@ -35,13 +36,14 @@ async fn main() {
     let to = "s9602675";
     let search: SearchResponse = client
         .search(&from, &to)
-        .date("2025-01-08")
-        .transport_types(TransportTypes::Suburban)
+        // Параметры запроса устанавливаются с помощью функций с соответствующим именем
+        .transport_types(TransportTypes::Suburban) 
         .send()
         .await
         .unwrap();
 }
 ```
+Другие примеры можно найти в папке /examples
 
 ### Доступные методы
 
