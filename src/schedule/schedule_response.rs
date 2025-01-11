@@ -1,7 +1,6 @@
 use crate::enums::TransportType;
 use chrono::{DateTime, Utc};
 use serde::Deserialize;
-use serde_json::Value;
 
 #[derive(Default, Debug, Deserialize)]
 #[serde(default)]
@@ -10,18 +9,19 @@ pub struct ScheduleResponse {
     pub pagination: Pagination,
     pub station: Station,
     pub schedule: Vec<Schedule>,
-    pub interval_schedule: Vec<IntervalSchedule>,
+    pub interval_schedule: Vec<Schedule>,
     pub schedule_direction: ScheduleDirection,
     pub directions: Vec<Direction>,
 }
 
 #[derive(Default, Debug, Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     pub thread: Thread,
     pub is_fuzzy: bool,
     pub days: String,
     pub stops: String,
-    pub terminal: Value,
+    pub terminal: Option<String>,
     pub platform: String,
     pub except_days: Option<String>,
     pub arrival: DateTime<Utc>,
@@ -79,17 +79,6 @@ pub struct TransportSubtype {
     pub color: Option<String>,
     pub code: Option<String>,
     pub title: Option<String>,
-}
-
-#[derive(Default, Debug, Deserialize)]
-pub struct IntervalSchedule {
-    pub except_days: Value,
-    pub thread: Thread,
-    pub is_fuzzy: bool,
-    pub days: String,
-    pub stops: String,
-    pub terminal: Value,
-    pub platform: String,
 }
 
 #[derive(Default, Debug, Deserialize)]

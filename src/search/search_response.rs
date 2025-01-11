@@ -1,7 +1,6 @@
 use crate::enums::TransportType;
 use chrono::{DateTime, NaiveDate, Utc};
 use serde::Deserialize;
-use serde_json::Value;
 
 #[derive(Default, Debug, Deserialize)]
 pub struct SearchResponse {
@@ -42,7 +41,7 @@ pub struct IntervalSegment {
     pub thread: Thread,
     pub departure_platform: String,
     pub stops: String,
-    pub departure_terminal: Value,
+    pub departure_terminal: Option<String>,
     pub to: To,
     pub has_transfers: bool,
     pub tickets_info: TicketsInfo,
@@ -63,7 +62,7 @@ pub struct Thread {
     pub transport_type: TransportType,
     pub vehicle: Option<String>,
     pub transport_subtype: TransportSubtype,
-    pub express_type: Value,
+    pub express_type: Option<String>,
 }
 #[derive(Default, Debug, Deserialize)]
 pub struct RFrom {
@@ -103,7 +102,7 @@ pub struct Carrier {
     pub code: i64,
     pub contacts: String,
     pub url: String,
-    pub logo_svg: Value,
+    pub logo_svg: Option<String>,
     pub title: String,
     pub phone: String,
     pub codes: Codes,
