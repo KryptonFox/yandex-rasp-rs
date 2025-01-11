@@ -7,6 +7,8 @@ readme = "README.md"
 repository = "https://github.com/KryptonFox/yandex-rasp-rs"
 homepage = "https://github.com/KryptonFox/yandex-rasp-rs"
 description = "Библиотека для взаимодействия с API Яндекс.Расписаний на языке Rust"
+license = "MIT"
+license-file = "LICENSE"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -14,5 +16,5 @@ serde_json = "1.0"
 reqwest = { version = "0.12.12", features = ["json"] }
 tokio = { version = "1.43", features = ["full"] }
 thiserror = "2.0"
-chrono = {version = "0.4.39", features = ["alloc", "now", "serde"]}
+chrono = { version = "0.4.39", features = ["alloc", "now", "serde"] }
 chrono-tz = "0.10.0"
