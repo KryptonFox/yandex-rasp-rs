@@ -1,7 +1,8 @@
 pub mod stations_list_response;
 
 use crate::enums::Lang;
-use crate::YaRaspClient;
+use crate::errors::YaRaspError;
+use crate::{handle_response, YaRaspClient};
 use stations_list_response::StationsListResponse;
 
 pub struct StationsListRequestBuilder {
@@ -17,7 +18,7 @@ impl StationsListRequestBuilder {
     }
 
     /// Отправить запрос
-    pub async fn send(&self) -> Result<StationsListResponse, Box<dyn std::error::Error>> {
+    pub async fn send(&self) -> Result<StationsListResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -32,11 +33,7 @@ impl StationsListRequestBuilder {
         if response.status().is_success() {
             Ok(response.json::<StationsListResponse>().await?)
         } else {
-            Err(format!(
-                "Unable to fetch stations list. Status: {}",
-                response.status()
-            )
-            .into())
+            handle_response::handle_response(response).await
         }
     }
 
