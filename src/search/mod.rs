@@ -1,10 +1,11 @@
+//! Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/schedule-point-point>
 pub mod search_response;
 
 use crate::enums::{Lang, TransportType};
 use crate::errors::YaRaspError;
 use crate::handle_response::handle_response;
 use crate::YaRaspClient;
-use chrono::{Local, NaiveDate, TimeZone};
+use chrono::{Local, NaiveDate};
 use chrono_tz::{Tz, UTC};
 use search_response::SearchResponse;
 

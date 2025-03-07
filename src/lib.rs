@@ -29,17 +29,20 @@ impl YaRaspClient {
     }
 
     /// Возвращает конструктор запроса на поиск расписания между станциями, код которых был передан
+    /// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/schedule-point-point>
     pub fn search(&self, from: &str, to: &str) -> SearchRequestBuilder {
         SearchRequestBuilder::new(self.clone(), from.to_string(), to.to_string())
     }
 
     /// Возвращает конструктор запроса на поиск расписания для станции, чей код был передан
+    /// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/schedule-on-station>
     pub fn schedule(&self, station: &str) -> ScheduleRequestBuilder {
         ScheduleRequestBuilder::new(self.clone(), station.to_string())
     }
 
     /// Возвращает конструктор запроса на получения списка всех станций из API.
     /// Можно использовать для поиска кода станции по её названию
+    /// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/stations-list>
     pub fn stations_list(&self) -> StationsListRequestBuilder {
         StationsListRequestBuilder::new(self.clone())
     }

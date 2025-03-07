@@ -1,3 +1,4 @@
+//! Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/stations-list>
 pub mod stations_list_response;
 
 use crate::enums::Lang;

@@ -1,3 +1,4 @@
+//! Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/schedule-on-station>
 pub mod schedule_response;
 
 use crate::enums::{Lang, ScheduleEvent, TransportType};
