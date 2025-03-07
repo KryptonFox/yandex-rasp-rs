@@ -1,9 +1,9 @@
 pub mod enums;
 pub mod errors;
 mod handle_response;
-mod schedule;
-mod search;
-mod stations_list;
+pub mod schedule;
+pub mod search;
+pub mod stations_list;
 
 pub use crate::schedule::schedule_response::ScheduleResponse;
 pub use crate::schedule::ScheduleRequestBuilder;
