@@ -5,12 +5,9 @@ pub mod schedule;
 pub mod search;
 pub mod stations_list;
 
-pub use crate::schedule::schedule_response::ScheduleResponse;
-pub use crate::schedule::ScheduleRequestBuilder;
-pub use crate::search::search_response::SearchResponse;
-pub use crate::search::SearchRequestBuilder;
-pub use crate::stations_list::stations_list_response::StationsListResponse;
-pub use crate::stations_list::StationsListRequestBuilder;
+use crate::schedule::ScheduleRequestBuilder;
+use crate::search::SearchRequestBuilder;
+use crate::stations_list::StationsListRequestBuilder;
 
 /// Основной клиент для взаимодействия с API
 #[derive(Clone)]

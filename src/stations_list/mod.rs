@@ -1,10 +1,10 @@
 //! Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/stations-list>
-pub mod stations_list_response;
+mod stations_list_response;
+pub use stations_list_response::*;
 
 use crate::enums::Lang;
 use crate::errors::YaRaspError;
 use crate::{handle_response, YaRaspClient};
-use stations_list_response::StationsListResponse;
 
 pub struct StationsListRequestBuilder {
     ya_rasp_client: YaRaspClient,

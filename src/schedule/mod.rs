@@ -1,5 +1,6 @@
 //! Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/schedule-on-station>
-pub mod schedule_response;
+mod schedule_response;
+pub use schedule_response::*;
 
 use crate::enums::{Lang, ScheduleEvent, TransportType};
 use crate::errors::YaRaspError;
@@ -8,7 +9,6 @@ use crate::YaRaspClient;
 use chrono::{Local, NaiveDate};
 use chrono_tz::Tz;
 use chrono_tz::Tz::UTC;
-use schedule_response::ScheduleResponse;
 
 pub struct ScheduleRequestBuilder {
     ya_rasp_client: YaRaspClient,
