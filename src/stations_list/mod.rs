@@ -10,6 +10,7 @@ pub struct StationsListRequestBuilder {
     ya_rasp_client: YaRaspClient,
     lang: Lang,
 }
+
 impl StationsListRequestBuilder {
     pub fn new(ya_rasp_client: YaRaspClient) -> StationsListRequestBuilder {
         Self {

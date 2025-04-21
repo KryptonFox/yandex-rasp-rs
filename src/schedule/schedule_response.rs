@@ -82,13 +82,6 @@ pub struct TransportSubtype {
 }
 
 #[derive(Default, Debug, Deserialize)]
-pub struct Interval {
-    pub density: String,
-    pub end_time: String,
-    pub begin_time: String,
-}
-
-#[derive(Default, Debug, Deserialize)]
 pub struct ScheduleDirection {
     pub code: String,
     pub title: String,
