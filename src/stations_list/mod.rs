@@ -19,7 +19,7 @@ impl StationsListRequestBuilder {
     }
 
     /// Отправить запрос
-    pub async fn send(&self) -> Result<StationsListResponse, Box<dyn std::error::Error>> {
+    pub async fn send(&self) -> Result<StationsListResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -34,11 +34,7 @@ impl StationsListRequestBuilder {
         if response.status().is_success() {
             Ok(response.json::<StationsListResponse>().await?)
         } else {
-            Err(format!(
-                "Unable to fetch stations list. Status: {}",
-                response.status()
-            )
-            .into())
+            Err(YaRaspError::ApiErrorCode(response.status().as_u16()))
         }
     }
 
