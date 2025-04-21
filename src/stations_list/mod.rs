@@ -4,6 +4,7 @@ use crate::enums::Lang;
 use crate::YaRaspClient;
 use stations_list_response::StationsListResponse;
 use crate::constants::STATIONS_LIST_ENDPOINT;
+use crate::errors::YaRaspError;
 
 pub struct StationsListRequestBuilder {
     ya_rasp_client: YaRaspClient,

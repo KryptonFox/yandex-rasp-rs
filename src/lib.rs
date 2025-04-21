@@ -4,6 +4,7 @@ mod handle_response;
 mod schedule;
 mod search;
 mod stations_list;
+mod thread;
 mod constants;
 
 pub use crate::schedule::schedule_response::ScheduleResponse;
@@ -12,6 +13,7 @@ pub use crate::search::search_response::SearchResponse;
 pub use crate::search::SearchRequestBuilder;
 pub use crate::stations_list::stations_list_response::StationsListResponse;
 pub use crate::stations_list::StationsListRequestBuilder;
+use crate::thread::ThreadRequestBuilder;
 
 /// Основной клиент для взаимодействия с API
 #[derive(Clone)]
@@ -37,6 +39,10 @@ impl YaRaspClient {
     /// Возвращает конструктор запроса на поиск расписания для станции, чей код был передан
     pub fn schedule(&self, station: &str) -> ScheduleRequestBuilder {
         ScheduleRequestBuilder::new(self.clone(), station.to_string())
+    }
+
+    pub fn thread(&self, thread_uid: &str) -> ThreadRequestBuilder {
+        ThreadRequestBuilder::new(self.clone(), thread_uid)
     }
 
     /// Возвращает конструктор запроса на получения списка всех станций из API.
