@@ -3,6 +3,7 @@ pub mod stations_list_response;
 use crate::enums::Lang;
 use crate::YaRaspClient;
 use stations_list_response::StationsListResponse;
+use crate::constants::STATIONS_LIST_ENDPOINT;
 
 pub struct StationsListRequestBuilder {
     ya_rasp_client: YaRaspClient,
@@ -21,7 +22,7 @@ impl StationsListRequestBuilder {
         let response = self
             .ya_rasp_client
             .reqwest_client
-            .get("https://api.rasp.yandex.net/v3.0/stations_list/")
+            .get(STATIONS_LIST_ENDPOINT.clone())
             .query(&[
                 ("format", "json"),
                 ("apikey", &self.ya_rasp_client.api_key),

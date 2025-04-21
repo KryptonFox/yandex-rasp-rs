@@ -1,10 +1,11 @@
 pub mod search_response;
 
+use crate::constants::SEARCH_ENDPOINT;
 use crate::enums::{Lang, TransportType};
 use crate::errors::YaRaspError;
 use crate::handle_response::handle_response;
 use crate::YaRaspClient;
-use chrono::{Local, NaiveDate, TimeZone};
+use chrono::{Local, NaiveDate};
 use chrono_tz::{Tz, UTC};
 use search_response::SearchResponse;
 
@@ -48,7 +49,7 @@ impl SearchRequestBuilder {
         let response = self
             .ya_rasp_client
             .reqwest_client
-            .get("https://api.rasp.yandex.net/v3.0/search/")
+            .get(SEARCH_ENDPOINT.clone())
             .query(&[
                 ("format", "json"),
                 ("apikey", &self.ya_rasp_client.api_key),

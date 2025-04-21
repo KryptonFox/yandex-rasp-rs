@@ -4,6 +4,7 @@ mod handle_response;
 mod schedule;
 mod search;
 mod stations_list;
+mod constants;
 
 pub use crate::schedule::schedule_response::ScheduleResponse;
 pub use crate::schedule::ScheduleRequestBuilder;
